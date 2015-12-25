@@ -36,7 +36,17 @@ function mostrarInformacion(c) {
 function categoria(valor) {
 
 	if (valor != '0') {
-		$('#cantCat').removeClass('hidden');
+		if(valor == 1){
+			$('#cantNino').addClass('hidden');
+			$('#cantAdulto').removeClass('hidden');
+		}
+		if (valor == 2){
+			$('#cantNino').removeClass('hidden');
+			$('#cantAdulto').addClass('hidden');
+		}
+	}else{
+		$('#cantNino').addClass('hidden');
+		$('#cantAdulto').addClass('hidden');
 	}
 }
 /*function nuevaRazon(genial)

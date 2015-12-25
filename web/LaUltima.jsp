@@ -66,7 +66,7 @@
 												<option value="1">Adulto</option>
 												<option value="2">Niño y Adulto Mayor</option>
 											</select>
-											<div class="form-group hidden" id="cantCat" >
+											<div class="form-group hidden" id="cantAdulto" >
 											<!--<select class="form-control" name="inCantidad" id="inCantidad" onchange="ok(this.value)" >
 												<option value="0">Seleccionar</option>
 												<option value="1">1</option>
@@ -75,9 +75,15 @@
 												<option value="4">4</option>
 												<option value="5">5</option>
 											</select>!-->
-											<button type="button" class='qtyminus btn btn-default btn-lg' field='quantity' ><span class="glyphicon glyphicon-minus" aria-hidden="true"></span></button>
-											<input type='text' name='quantity' value='0' class='qty form-control' style="display: inline-block;width: 20%;" />
-											<button type="button" class='qtyplus btn btn-default btn-lg' field='quantity'><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button>
+											<button type="button" class='qtyminus1 btn btn-default btn-lg' field='quantity1' ><span class="glyphicon glyphicon-minus" aria-hidden="true"></span></button>
+											<input type='text' name='quantity1' value='0' class='qty form-control' style="display: inline-block;width: 20%;" />
+											<button type="button" class='qtyplus1 btn btn-default btn-lg' field='quantity1'><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button>
+											</div>
+
+											<div class="form-group hidden" id="cantNino" >
+												<button type="button" class='qtyminus2 btn btn-default btn-lg' field='quantity2' ><span class="glyphicon glyphicon-minus" aria-hidden="true"></span></button>
+												<input type='text' name='quantity2' value='0' class='qty form-control' style="display: inline-block;width: 20%;" />
+												<button type="button" class='qtyplus2 btn btn-default btn-lg' field='quantity2'><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button>
 											</div>
 
 										</div>
