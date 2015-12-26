@@ -43,7 +43,7 @@
 							<div class="col-sm-12 col-md-10 col-md-offset-1" style="padding-left:10px;padding-right:10px;" >
 								<div class="section-title first" style="margin-bottom:0px;" >
 									<div class="form-group hidden " id="Usuario">
-										<input type="text" id="inUsu" name="inUsu" style="display: none">${usu.idUsuario}</input>
+										<input type="text" id="inUsu" name="inUsu" style="display: none" value="${usu.idUsuario}"></input>
 									</div>
 										<div class="form-group" name="pel">
 											<label style="display:block;padding-top:15px;padding-bottom:15px;">NOMBRE DE LA PELÍCULA</label>
@@ -84,7 +84,7 @@
 												<button type="button" class='qtyminus2 btn btn-default btn-lg' field='quantity2'><span class="glyphicon glyphicon-minus" aria-hidden="true"></span></button>
 												<input type='text' name='quantity2' value='0' class='qty form-control' style="display: inline-block;width: 20%;" id="idNino" />
 												<button type="button" class='qtyplus2 btn btn-default btn-lg' field='quantity2'><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button>
-												<input id="totalNinos" style="display: none"></input>
+												<input id="totalNinos" style="display: none"/>
 											</div>
 
 										</div>
@@ -115,8 +115,11 @@
 
 										<div class="form-group hidden" id="precio">
 											<label style="display:block;padding-top:15px;padding-bottom:15px;">PRECIO TOTAL</label>
-											<div id="precioIndividual" style="display:none"></div>
-											<div id="total"> </div>
+											<div class="input-group">
+												<span class="input-group-addon">$</span>
+												<input id="total" name="total" type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
+												<div id="precioIndividual" style="display:none"></div>
+											</div>
 										</div>
 
 
@@ -147,7 +150,7 @@
 				$('#calificacionPelicula').text(parametros[3].toUpperCase());
 				var array = parametros[4].substring(1, parametros[4].length - 1 );
 				var cars = array.split(",");
-				var text = "<label style='display:block;padding-top:15px;padding-bottom:15px;'>HORARIOS</label><select class='form-control' name='inHorario' id='inHorario' onchange='ok(this.value)'><option value='0'>Seleccionar</option>";
+				var text = "<label style='display:block;padding-top:15px;padding-bottom:15px;'>HORARIOS</label><select class='form-control' name='inHorario' id='inHorario'><option value='0'>Seleccionar</option>";
 				var i;
 				for (i = 0; i < cars.length; i++) {
 					text += "<option value="+ (i+1) +">" + cars[i]+ "</option>" + "<br>";

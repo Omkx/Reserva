@@ -309,10 +309,10 @@ public class TransaccionDAOJdbc implements TransaccionDAO {
     public Reserva agregarReserva(Reserva reserva) {
         Statement sentencia = null;
         StringBuilder sql = new StringBuilder();
-        sql.append(" insert into reserva values ( null,")
-                .append(" '" + reserva.getFkUsuario() + "')")
-                .append(" '" + reserva.getFkFuncion() + "')")
-                .append(" '" + reserva.getFechaReserva() + "')")
+        sql.append(" insert into Reserva values ( null,")
+                .append(" '" + reserva.getFkUsuario() + "',")
+                .append(" '" + reserva.getFkFuncion() + "',")
+                .append(" '" + reserva.getFechaReserva() + "',")
                 .append(" '" + reserva.getMonto() + "');");
         try{
             abrirConexion();

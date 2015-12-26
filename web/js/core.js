@@ -43,7 +43,7 @@ function eUsuario(){
 function eAsignacionPerfil(){
 	$('#mAsignacionPerfil').modal();
 }
-function ok(cantidad)
+/*function ok(cantidad)
 {
 	//console.log('cantidad');
 	var precio = parseFloat(document.getElementById("precioIndividual").innerHTML);
@@ -52,6 +52,7 @@ function ok(cantidad)
 	//console.log('cantidad a:'+a);
 	$('#total').html('S/.'+ a);
 }
+*/
 function mostrarInformacion(c) {
 
 	if (c != '0') {

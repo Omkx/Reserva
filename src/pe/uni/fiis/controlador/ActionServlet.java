@@ -49,7 +49,6 @@ public class ActionServlet extends HttpServlet {
            //if(request.getParameter("pelicula").toString().equals("")){
            //name="Hello User";
            //}
-           System.out.print(Arrays.toString(array));
            response.getWriter().write(pelicula.getSynopsis() + "|" + pelicula.getDuracion() + "|" + pelicula.getUrl() + "|" + pelicula.getCalificacion() + "|"+Arrays.toString(array));
            response.setContentType("text/html");
            response.setCharacterEncoding("UTF-8");

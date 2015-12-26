@@ -31,7 +31,7 @@ jQuery(document).ready(function(){
 
             var total = ninos + adultos;
             console.log(total);
-            $('#total').html('S/.'+ total.toString());
+            $('#total').val(total.toString());
         }
         // Get the field name
         fieldName = $(this).attr('field');
@@ -84,7 +84,7 @@ jQuery(document).ready(function(){
 
             var total = ninos + adultos;
             console.log(total);
-            $('#total').html('S/.'+ total.toString());
+            $('#total').val(total.toString());
         }
         // Get the field name
         fieldName = $(this).attr('field');
@@ -138,7 +138,7 @@ jQuery(document).ready(function(){
 
             var total = ninos + adultos;
             console.log(total);
-            $('#total').html('S/.'+ total.toString());
+            $('#total').val(total.toString());
         }
         // Get the field name
         fieldName = $(this).attr('field');
@@ -192,7 +192,7 @@ jQuery(document).ready(function(){
 
             var total = ninos + adultos;
             console.log(total);
-            $('#total').html('S/.'+ total.toString());
+            $('#total').val(total.toString());
         }
         // Get the field name
         fieldName = $(this).attr('field');
