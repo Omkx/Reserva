@@ -4,11 +4,10 @@ package pe.uni.fiis.modelo.bean;
 
 public class Reserva {
     private Integer idReserva;
-    private Integer cantidad;
-    private String fechaReserva;
-    private Double monto;
     private Integer fkFuncion;
     private Integer fkUsuario;
+    private String fechaReserva;
+    private Double monto;
 
     public Integer getIdReserva() {
         return idReserva;
@@ -16,14 +15,6 @@ public class Reserva {
 
     public void setIdReserva(Integer idReserva) {
         this.idReserva = idReserva;
-    }
-
-    public Integer getCantidad() {
-        return cantidad;
-    }
-
-    public void setCantidad(Integer cantidad) {
-        this.cantidad = cantidad;
     }
 
     public String getFechaReserva() {

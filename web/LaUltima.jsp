@@ -38,15 +38,16 @@
 						<span class="glyphicon glyphicon-film"></span> <strong class="text-center">VENTA DE TICKETS</strong>
 					</div>
 					<div class="panel body">
-						<form action="select" method="post">
+						<form action="Reservar" method="post">
 						<fieldset>
 							<div class="col-sm-12 col-md-10 col-md-offset-1" style="padding-left:10px;padding-right:10px;" >
 								<div class="section-title first" style="margin-bottom:0px;" >
-									<label style="display: none" id="inUsuario" name="inUsuario">${usua.cuenta}</label>
+									<div class="form-group hidden " id="Usuario">
+										<input type="text" id="inUsu" name="inUsu" style="display: none">${usu.idUsuario}</input>
+									</div>
 										<div class="form-group" name="pel">
-
 											<label style="display:block;padding-top:15px;padding-bottom:15px;">NOMBRE DE LA PELÍCULA</label>
-											
+
 											<select class="form-control"  name="inPelicula" id="inPelicula" onchange="mostrarInformacion(this.value)">
 												<option value="0">Seleccionar</option>
 												<c:forEach var="fila" items="${peliculas}">
@@ -59,31 +60,31 @@
 										<div class="form-group hidden" id="horario" >
 										</div>
 
-										<div class="form-group hidden" id="cantidad">
-											<label style="display:block;padding-top:15px;padding-bottom:15px;">CANTIDAD</label>
-											<select name="" id="input" class="form-control" required="required" onchange="categoria(this.value)">
+										<div class="form-group hidden" id="cantidad1">
+											<label style="display:block;padding-top:15px;padding-bottom:15px;">RESERVA POR PERSONA</label>
+											<select name="inResPer" id="input1" class="form-control" required="required" onchange="categoria(this.value)" style="width: 40%;display:inline-block;margin-right: 2.8em;padding: 2px 12px;font-size: 17px;">
 												<option value="0">Seleccionar</option>
 												<option value="1">Adulto</option>
-												<option value="2">Niño y Adulto Mayor</option>
 											</select>
-											<div class="form-group hidden" id="cantAdulto" >
-											<!--<select class="form-control" name="inCantidad" id="inCantidad" onchange="ok(this.value)" >
-												<option value="0">Seleccionar</option>
-												<option value="1">1</option>
-												<option value="2">2</option>
-												<option value="3">3</option>
-												<option value="4">4</option>
-												<option value="5">5</option>
-											</select>!-->
-											<button type="button" class='qtyminus1 btn btn-default btn-lg' field='quantity1' ><span class="glyphicon glyphicon-minus" aria-hidden="true"></span></button>
-											<input type='text' name='quantity1' value='0' class='qty form-control' style="display: inline-block;width: 20%;" />
-											<button type="button" class='qtyplus1 btn btn-default btn-lg' field='quantity1'><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button>
-											</div>
 
-											<div class="form-group hidden" id="cantNino" >
-												<button type="button" class='qtyminus2 btn btn-default btn-lg' field='quantity2' ><span class="glyphicon glyphicon-minus" aria-hidden="true"></span></button>
-												<input type='text' name='quantity2' value='0' class='qty form-control' style="display: inline-block;width: 20%;" />
+											<div class="form-group hidden" id="cantAdulto" style="display:inline-block; width: 50%;">
+												<button type="button" class='qtyminus1 btn btn-default btn-lg' field='quantity1'><span class="glyphicon glyphicon-minus" aria-hidden="true"></span></button>
+												<input type='text' name='quantity1' value='0' class='qty form-control' style="display: inline-block;width: 20%;" id="inAdulto" />
+												<button type="button" class='qtyplus1 btn btn-default btn-lg' field='quantity1'><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button>
+												<input id="totalAdultos" style="display: none"/>
+											</div>
+											<a href="#" id="more">more..</a>
+										</div>
+										<div class="form-group hidden" id="cantidad2">
+											<select name="inResPer" id="input2" class="form-control" required="required" onchange="categoria(this.value)" style="width: 40%;display:inline-block;margin-right: 2.8em;padding: 2px 12px;font-size: 17px;">
+												<option value="0">Seleccionar</option>
+												<option value="2">Niño y Adulto Mayor</option>
+												</select>
+											<div class="form-group hidden" id="cantNino"  style="display:inline-block; width: 50%;">
+												<button type="button" class='qtyminus2 btn btn-default btn-lg' field='quantity2'><span class="glyphicon glyphicon-minus" aria-hidden="true"></span></button>
+												<input type='text' name='quantity2' value='0' class='qty form-control' style="display: inline-block;width: 20%;" id="idNino" />
 												<button type="button" class='qtyplus2 btn btn-default btn-lg' field='quantity2'><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button>
+												<input id="totalNinos" style="display: none"></input>
 											</div>
 
 										</div>
@@ -91,9 +92,6 @@
 
 										<div class="form-group hidden " id="synopsis">
 											<label style="display:block;padding-top:15px;padding-bottom:15px;">SIPNOSIS</label>
-											<script>
-
-											</script>
 												<h4 id="pelsyp"></h4>
 
 										</div>
@@ -147,9 +145,9 @@
 				var url = "https://www.youtube.com/embed/";
 				document.getElementById("trailerIframe").src = url.concat(parametros[2]);
 				$('#calificacionPelicula').text(parametros[3].toUpperCase());
-				var array = parametros[5].substring(1, parametros[4].length - 1 );
+				var array = parametros[4].substring(1, parametros[4].length - 1 );
 				var cars = array.split(",");
-				var text = "<label style='display:block;padding-top:15px;padding-bottom:15px;'>HORARIOS</label><select class='form-control' name='inHorario' id='inHorario' onchange='ok(this.value)'>";
+				var text = "<label style='display:block;padding-top:15px;padding-bottom:15px;'>HORARIOS</label><select class='form-control' name='inHorario' id='inHorario' onchange='ok(this.value)'><option value='0'>Seleccionar</option>";
 				var i;
 				for (i = 0; i < cars.length; i++) {
 					text += "<option value="+ (i+1) +">" + cars[i]+ "</option>" + "<br>";

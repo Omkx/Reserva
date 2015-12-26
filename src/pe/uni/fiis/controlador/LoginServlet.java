@@ -31,10 +31,10 @@ public class LoginServlet extends HttpServlet {
 
         if(usuario != null){
             if (usuario.getCuenta().equals("admin")){
-                request.setAttribute("usua", usuario);
+                request.setAttribute("usu", usuario);
                 request.getRequestDispatcher("/administrador.jsp").forward(request,response);
             }else {
-                request.setAttribute("usua", usuario);
+                request.setAttribute("usu", usuario);
                 List<Pelicula> peliculas = TransaccionFactory.getInstance().listarPelicula();
                 request.setAttribute("peliculas", peliculas);
                 /*List<Horario> horarios = TransaccionFactory.getInstance().listarHorario();

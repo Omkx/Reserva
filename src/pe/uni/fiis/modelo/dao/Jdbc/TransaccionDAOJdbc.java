@@ -244,7 +244,6 @@ public class TransaccionDAOJdbc implements TransaccionDAO {
         return pelicula;
     }
 
-
     public Usuario agregarUsuario(Usuario usuario) {
         Statement sentencia = null;
         StringBuilder sql = new StringBuilder();
@@ -311,9 +310,10 @@ public class TransaccionDAOJdbc implements TransaccionDAO {
         Statement sentencia = null;
         StringBuilder sql = new StringBuilder();
         sql.append(" insert into reserva values ( null,")
-                .append(" '" + reserva.getCantidad() + "')")
+                .append(" '" + reserva.getFkUsuario() + "')")
+                .append(" '" + reserva.getFkFuncion() + "')")
                 .append(" '" + reserva.getFechaReserva() + "')")
-                .append(" '" + reserva.getMonto() + "')");
+                .append(" '" + reserva.getMonto() + "');");
         try{
             abrirConexion();
             sentencia = conexion.createStatement();
@@ -558,6 +558,33 @@ public class TransaccionDAOJdbc implements TransaccionDAO {
             }
         }
         return funcion;
+    }
+
+    public Integer ElegirFuncion(Integer idPelicula, Integer idHorario){
+        Integer fkFuncion = null;
+        abrirConexion();
+        try {
+            consulta = conexion.createStatement();
+            String sql="select * from Funcion where fkPelicula = "+idPelicula+ " and " +idHorario;
+            resultado = consulta.executeQuery(sql);
+            if(resultado!=null){
+                while(resultado.next()) {
+                    fkFuncion = resultado.getInt("pkFuncion");
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        finally{
+            cerrarConexion();
+            try {
+                resultado.close();
+                consulta.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        return fkFuncion;
     }
 
     public List<Horario> InfoHorarios(Integer idPelicula){

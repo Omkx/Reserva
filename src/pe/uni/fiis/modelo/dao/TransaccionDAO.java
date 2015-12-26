@@ -3,7 +3,6 @@ package pe.uni.fiis.modelo.dao;
 import pe.uni.fiis.modelo.bean.*;
 
 import java.util.List;
-import pe.uni.fiis.modelo.dao.Jdbc.TransaccionDAOJdbc;
 
 
 public interface TransaccionDAO {
@@ -22,5 +21,6 @@ public interface TransaccionDAO {
     public Pelicula mostrarInfo();
     public Funcion InfoFuncion(Integer idPelicula);
     public List<Horario> InfoHorarios(Integer idPelicula);
+    public Integer ElegirFuncion(Integer idPelicula, Integer idHorario);
 }
 

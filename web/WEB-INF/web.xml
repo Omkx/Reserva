@@ -20,6 +20,14 @@
         <servlet-name>CrearPeliculaServlet</servlet-name>
         <servlet-class>pe.uni.fiis.controlador.CrearPeliculaServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ReservaServlet</servlet-name>
+        <servlet-class>pe.uni.fiis.controlador.ReservaServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ReservaServlet</servlet-name>
+        <url-pattern>/Reservar</url-pattern>
+    </servlet-mapping>
     <servlet-mapping>
         <servlet-name>CrearPeliculaServlet</servlet-name>
         <url-pattern>/AdministrarPelicula</url-pattern>

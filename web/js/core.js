@@ -1,3 +1,36 @@
+/*function monto(){
+	//var diasSemana = new Array("Domingo","Lunes","Martes","Miércoles","Jueves","Viernes","Sábado");
+	var f=new Date();
+	var nroAdultos;
+	var nroNinos;
+	if(document.getElementById('inAdulto') == null){
+		nroAdultos = 0;
+	}else{
+		nroAdultos = parseFloat(document.getElementById('inAdulto').value) + 1;
+	}
+
+	if(document.getElementById('inNino') == null){
+		nroNinos = 0;
+	}else{
+		nroNinos = parseFloat(document.getElementById('inNino').value) + 1 ;
+	}
+
+	if (f.getDay()==1 || f.getDay()==3)
+	{
+		var precioAdulto = 20.00;
+		var precioNino = 10.00;
+	}else if(f.getDay()==2)
+	{
+		var precioAdulto = 12.00;
+		var precioNino = 7.00;
+	}else{
+		var precioAdulto = 28.00;
+		var precioNino = 15.00;
+	}
+	monto = nroAdultos*precioAdulto + nroNinos*precioNino;
+	$('#total').html('S/.'+ monto.toString());
+}
+*/
 function eAplicacion(){
 	$('#mAplicacion').modal();
 }
@@ -23,7 +56,7 @@ function mostrarInformacion(c) {
 
 	if (c != '0') {
 		$('#horario').removeClass('hidden');
-		$('#cantidad').removeClass('hidden');
+		$('#cantidad1').removeClass('hidden');
 		$('#synopsis').removeClass('hidden');
 		$('#duracion').removeClass('hidden');
 		$('#trailer').removeClass('hidden');
@@ -37,12 +70,10 @@ function categoria(valor) {
 
 	if (valor != '0') {
 		if(valor == 1){
-			$('#cantNino').addClass('hidden');
 			$('#cantAdulto').removeClass('hidden');
 		}
 		if (valor == 2){
 			$('#cantNino').removeClass('hidden');
-			$('#cantAdulto').addClass('hidden');
 		}
 	}else{
 		$('#cantNino').addClass('hidden');
