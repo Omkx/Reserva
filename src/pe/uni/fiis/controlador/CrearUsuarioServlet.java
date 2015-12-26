@@ -36,6 +36,6 @@ public class CrearUsuarioServlet extends HttpServlet {
         usuario.setDni(dniUsuario);
 
         TransaccionFactory.getInstance().agregarUsuario(usuario);
-        request.getRequestDispatcher("/Login.jsp").forward(request,response);
+        request.getRequestDispatcher("/login.jsp").forward(request,response);
     }
 }

@@ -38,15 +38,10 @@ public class LoginServlet extends HttpServlet {
                 request.setAttribute("usu", usuario);
                 List<Pelicula> peliculas = TransaccionFactory.getInstance().listarPelicula();
                 request.setAttribute("peliculas", peliculas);
-                /*List<Horario> horarios = TransaccionFactory.getInstance().listarHorario();
-                request.setAttribute("horarios", horarios);
-                Pelicula pelicula = TransaccionFactory.getInstance().mostrarInfo();
-                request.setAttribute("pelicula", pelicula);*/
                 request.getRequestDispatcher("/LaUltima.jsp").forward(request, response);
             }
         }
         else{
-
             //String mensaje = "Usuario no existe";
             //request.setAttribute("men",mensaje);
             request.getRequestDispatcher("/login.jsp").forward(request,response);

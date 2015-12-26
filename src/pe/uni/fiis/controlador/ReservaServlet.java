@@ -28,10 +28,6 @@ public class ReservaServlet extends HttpServlet {
         Double monto = Double.valueOf(request.getParameter("total"));
 
         Integer fkFuncion = TransaccionFactory.getInstance().ElegirFuncion(idPelEnt, idHorario);
-        //String idUsu = request.getParameter("inUsu");
-        //Integer idUsuEnt = Integer.valueOf(idUsu);
-        //System.out.print(idUsuEnt);
-
         Calendar fecha = new GregorianCalendar();
         int año = fecha.get(Calendar.YEAR);
         int mes = fecha.get(Calendar.MONTH);
@@ -40,11 +36,6 @@ public class ReservaServlet extends HttpServlet {
         int minuto = fecha.get(Calendar.MINUTE);
         int segundo = fecha.get(Calendar.SECOND);
         String fechaActual = "Fecha Actual: " + dia + "/" + (mes + 1) + "/" + año;
-        //System.out.printf("Hora Actual: %02d:%02d:%02d %n",hora, minuto, segundo);
-
-        //Funcion funcion = new Funcion();
-        //funcion.setFkPelicula(idPelEnt);
-        //funcion.setFkHorario(idHorario);
 
         Reserva reserva = new Reserva();
         reserva.setFkFuncion(fkFuncion);
