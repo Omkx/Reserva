@@ -6,21 +6,23 @@ import java.util.List;
 
 
 public interface TransaccionDAO {
-    public Funcion agregarFuncion(Funcion funcion);
-    public Pelicula agregarPelicula(Pelicula pelicula);
-    public Reserva agregarReserva(Reserva reserva);
-    public Usuario agregarUsuario(Usuario usuario);
-    public Pelicula datosPelicula(Integer idPelicula);
-    public Horario agregarHorario(Horario horario);
-    public Horario modificarHorario(Horario horario);
-    public void eliminarHorario(Horario horario);
-    public Usuario obtenerUsuario(Usuario usuario);
-    public List<Horario> listarHorario();
-    public List<Pelicula> listarPelicula();
-    public List<Cantidad> listarCantidad();
-    public Pelicula mostrarInfo();
-    public Funcion InfoFuncion(Integer idPelicula);
-    public List<Horario> InfoHorarios(Integer idPelicula);
-    public Integer ElegirFuncion(Integer idPelicula, Integer idHorario);
+    Funcion agregarFuncion(Funcion funcion);
+    Pelicula agregarPelicula(Pelicula pelicula);
+    Reserva agregarReserva(Reserva reserva);
+    Usuario agregarUsuario(Usuario usuario);
+    Pelicula datosPelicula(Integer idPelicula);
+    Horario agregarHorario(String hora);
+    Horario modificarHorario(Horario horario);
+    void eliminarHorario(Horario horario);
+    Usuario obtenerUsuario(Usuario usuario);
+    List<Pelicula> listarPelicula();
+    Funcion InfoFuncion(Integer idPelicula);
+    List<Horario> InfoHorarios(Integer idPelicula);
+    Integer ElegirFuncion(Integer idPelicula, Integer idHorario);
+    Usuario datoUsuario(Integer idUsuario);
+    Horario datoHorario(Integer idHorario);
+    Sala datoSala(Integer idSala);
+    List<Sala> listarSala();
+    Sala agregarSala(Sala sala);
 }
 

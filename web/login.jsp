@@ -47,7 +47,7 @@
 													<span class="input-group-addon">
 														<i class="glyphicon glyphicon-user"></i>
 													</span>
-												<input type="text" class="form-control" id="inUsuario" name="inUsuario" placeholder="Ingrese usuario" autofocus>
+												<input type="text" class="form-control" id="inUsuario" name="inUsuario" placeholder="Ingrese usuario" autofocus required>
 											</div>
 										</div>
 										<div class="form-group">
@@ -55,13 +55,8 @@
 										  			<span class="input-group-addon">
 														<i class="glyphicon glyphicon-lock"></i>
 													</span>
-												<input type="password" class="form-control" id="inClave" name="inClave" placeholder="Ingrese contraseña">
+												<input type="password" class="form-control" id="inClave" name="inClave" placeholder="Ingrese contraseña" autofocus required>
 											</div>
-										</div>
-										<div class="form-group">
-										  		<span>
-													<i id="nologon" class="hidden text-danger"></i>
-												</span>
 										</div>
 										<div class="form-group">
 											<button type="submit" class="btn btn-lg btn-primary btn-block">Ingresar</button>

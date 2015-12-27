@@ -4,10 +4,8 @@ package pe.uni.fiis.modelo.bean;
 
 public class Funcion {
     private Integer idFuncion;
-    private String sala;
+    private Integer fkSala;
     private Integer fkHorario;
-    private String fecha;
-    private Integer nroAsientos;
     private Integer fkPelicula;
 
     public Integer getIdFuncion() {
@@ -18,28 +16,12 @@ public class Funcion {
         this.idFuncion = idFuncion;
     }
 
-    public String getSala() {
-        return sala;
+    public Integer getFkSala() {
+        return fkSala;
     }
 
-    public void setSala(String sala) {
-        this.sala = sala;
-    }
-
-    public String getFecha() {
-        return fecha;
-    }
-
-    public void setFecha(String fecha) {
-        this.fecha = fecha;
-    }
-
-    public Integer getNroAsientos() {
-        return nroAsientos;
-    }
-
-    public void setNroAsientos(Integer nroAsientos) {
-        this.nroAsientos = nroAsientos;
+    public void setFkSala(Integer fkSala) {
+        this.fkSala = fkSala;
     }
 
     public Integer getFkHorario() {

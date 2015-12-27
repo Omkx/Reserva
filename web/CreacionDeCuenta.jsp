@@ -33,13 +33,13 @@
 					</div>
 					<div class="panel body">
 
-						<form action="Crear" method="post">
-						<fieldset>
-							<div class="row">
-								<div class="text-center">
-									<img class="profile-img" src="img/ticket.png" height="128" width="128" alt="">
-								</div>
+						<div class="row">
+							<div class="text-center">
+								<img class="profile-img" src="img/ticket.png" height="128" width="128" alt="">
 							</div>
+						</div>
+						<form action="Crear" method="post">
+							<fieldset>
 							<div class="row">
 								<div class="col-sm-12 col-md-10 col-md-offset-1">
 									<div class="form-group">
@@ -47,7 +47,7 @@
 													<span class="input-group-addon">
 														<i class="glyphicon glyphicon-user"></i>
 													</span>
-											<input type="text" class="form-control" id="inUsuario" name="inUsuario" placeholder="Ingrese nombre de usuario" autofocus>
+											<input type="text" class="form-control" id="inUsuario" name="inUsuario" placeholder="Ingrese nombre de usuario"  autofocus required>
 										</div>
 									</div>
 									<div class="form-group">
@@ -55,7 +55,7 @@
 													<span class="input-group-addon">
 														<i class="glyphicon glyphicon-pencil"></i>
 													</span>
-											<input type="password" class="form-control" id="inPass" name="inPass" placeholder="Ingrese Contraseña" autofocus>
+											<input type="password" class="form-control" id="inPass" name="inPass" placeholder="Ingrese Contraseña"  autofocus required>
 										</div>
 									</div>
 									<div class="form-group">
@@ -63,7 +63,7 @@
 													<span class="input-group-addon">
 														<i class="glyphicon glyphicon-pencil"></i>
 													</span>
-											<input type="text" class="form-control" id="inNom" name="inNom" placeholder="Ingrese Nombre" autofocus>
+											<input type="text" class="form-control" id="inNom" name="inNom" placeholder="Ingrese Nombre"  autofocus required>
 										</div>
 									</div>
 									<div class="form-group">
@@ -72,7 +72,7 @@
 														<i class="glyphicon glyphicon-pencil"></i>
 
 													</span>
-											<input type="text" class="form-control" id="inApPa" name="inApPa" placeholder="Ingrese Apellido Paterno">
+											<input type="text" class="form-control" id="inApPa" name="inApPa" placeholder="Ingrese Apellido Paterno" autofocus required>
 										</div>
 									</div>
 									<div class="form-group">
@@ -86,7 +86,7 @@
 													<span class="input-group-addon">
 														<i class="glyphicon glyphicon-pencil"></i>
 													</span>
-											<input type="text" class="form-control" id="inApMa" name="inApMa" placeholder="Ingrese Apellido Materno" autofocus>
+											<input type="text" class="form-control" id="inApMa" name="inApMa" placeholder="Ingrese Apellido Materno"  autofocus required>
 										</div>
 									</div>
 									<div class="form-group">
@@ -94,7 +94,7 @@
 													<span class="input-group-addon">
 														<i class="glyphicon glyphicon-envelope"></i>
 													</span>
-											<input type="text" class="form-control" id="inEmail" name="inEmail" placeholder="Ingrese correo electronico" autofocus>
+											<input type="text" class="form-control" id="inEmail" name="inEmail" placeholder="Ingrese correo electronico"  autofocus required>
 										</div>
 									</div>
 									<div class="form-group">
@@ -102,14 +102,12 @@
 													<span class="input-group-addon">
 														<i class="glyphicon glyphicon-credit-card"></i>
 													</span>
-											<input type="text" class="form-control" id="inDni" name="inDni" placeholder="Ingrese DNI" autofocus>
+											<input type="text" class="form-control" id="inDni" name="inDni" placeholder="Ingrese DNI"  autofocus required>
 										</div>
 									</div>
 
 									<div class="form-group">
-										<a href="/login.jsp">
 											<button type="submit" class="btn btn-lg btn-primary btn-block">Crear</button>
-										</a>
 									</div>
 								</div>
 							</div>

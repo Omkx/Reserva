@@ -41,14 +41,14 @@
 						<form action="Reservar" method="post">
 						<fieldset>
 							<div class="col-sm-12 col-md-10 col-md-offset-1" style="padding-left:10px;padding-right:10px;" >
-								<div class="section-title first" style="margin-bottom:0px;" >
+								<div class="section-title first" style="margin-bottom:0;" >
 									<div class="form-group hidden " id="Usuario">
-										<input type="text" id="inUsu" name="inUsu" style="display: none" value="${usu.idUsuario}"></input>
+										<input type="text" id="inUsu" name="inUsu" style="display: none" value="${usu.idUsuario}"/>
 									</div>
 										<div class="form-group" name="pel">
 											<label style="display:block;padding-top:15px;padding-bottom:15px;">NOMBRE DE LA PELÍCULA</label>
 
-											<select class="form-control"  name="inPelicula" id="inPelicula" onchange="mostrarInformacion(this.value)">
+											<select class="form-control"  name="inPelicula" id="inPelicula" onchange="mostrarInformacion(this.value)" autofocus required>
 												<option value="0">Seleccionar</option>
 												<c:forEach var="fila" items="${peliculas}">
 													<option value="${fila.idPelicula}">${fila.nombre}</option>
@@ -62,7 +62,7 @@
 
 										<div class="form-group hidden" id="cantidad1">
 											<label style="display:block;padding-top:15px;padding-bottom:15px;">RESERVA POR PERSONA</label>
-											<select name="inResPer" id="input1" class="form-control" required="required" onchange="categoria(this.value)" style="width: 40%;display:inline-block;margin-right: 2.8em;padding: 2px 12px;font-size: 17px;">
+											<select name="inResPer" id="input1" class="form-control" required="required" onchange="categoria(this.value)" style="width: 40%;display:inline-block;margin-right: 2.8em;padding: 2px 12px;font-size: 17px;" autofocus required>
 												<option value="0">Seleccionar</option>
 												<option value="1">Adulto</option>
 											</select>
@@ -117,7 +117,7 @@
 											<label style="display:block;padding-top:15px;padding-bottom:15px;">PRECIO TOTAL</label>
 											<div class="input-group">
 												<span class="input-group-addon">$</span>
-												<input id="total" name="total" type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
+												<input id="total" name="total" type="text" class="form-control" aria-label="Amount (to the nearest dollar)" autofocus required>
 												<div id="precioIndividual" style="display:none"></div>
 											</div>
 										</div>

@@ -1,9 +1,6 @@
 package pe.uni.fiis.controlador;
 
-import pe.uni.fiis.modelo.bean.Cantidad;
-import pe.uni.fiis.modelo.bean.Horario;
-import pe.uni.fiis.modelo.bean.Pelicula;
-import pe.uni.fiis.modelo.bean.Usuario;
+import pe.uni.fiis.modelo.bean.*;
 import pe.uni.fiis.modelo.factory.TransaccionFactory;
 
 import javax.servlet.ServletException;
@@ -14,9 +11,6 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.List;
 
-/**
- * Created by javier on 28/11/2014.
- */
 public class LoginServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doGet(request,response);
@@ -33,7 +27,7 @@ public class LoginServlet extends HttpServlet {
         if(usuario != null){
             if (usuario.getCuenta().equals("admin")){
                 request.setAttribute("usu", usuario);
-                request.getRequestDispatcher("/administrador.jsp").forward(request,response);
+                request.getRequestDispatcher("/Administrador.jsp").forward(request,response);
             }else {
                 request.setAttribute("usu", usuario);
                 List<Pelicula> peliculas = TransaccionFactory.getInstance().listarPelicula();

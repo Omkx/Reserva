@@ -31,3 +31,7 @@ body.ultima{
 button{
 	color: black;
 }
+
+.mayuscula{
+	text-transform: uppercase;
+}

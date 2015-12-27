@@ -71,20 +71,21 @@ public class TransaccionDAOJdbc implements TransaccionDAO {
         return peliculas;
     }
 
-    public List<Horario> listarHorario(){
-        List<Horario> horarios = null;
+    public List<Sala> listarSala(){
+        List<Sala> salas = null;
         abrirConexion();
         try {
             consulta = conexion.createStatement();
-            String sql="select * from Horario ";
+            String sql="select * from Sala ";
             resultado = consulta.executeQuery(sql);
             if(resultado!=null){
-                horarios = new ArrayList<Horario>();
+                salas = new ArrayList<Sala>();
                 while(resultado.next()){
-                    Horario horario= new Horario();
-                    horario.setIdHorario(resultado.getInt("pkHorario"));
-                    horario.setHora(resultado.getString("hora"));
-                    horarios.add(horario);
+                    Sala sala = new Sala();
+                    sala.setIdSala(resultado.getInt("pkSala"));
+                    sala.setNroSala(resultado.getInt("nroSala"));
+                    sala.setNroAsientos(resultado.getInt("nroAsientos"));
+                    salas.add(sala);
                 }
             }
         } catch (SQLException e) {
@@ -99,76 +100,9 @@ public class TransaccionDAOJdbc implements TransaccionDAO {
                 e.printStackTrace();
             }
         }
-        return horarios;
+        return salas;
     }
 
-    public List<Cantidad> listarCantidad(){
-        List<Cantidad> cantidades = null;
-        abrirConexion();
-        try {
-            consulta = conexion.createStatement();
-            String sql="select * from Cantidad ";
-            resultado = consulta.executeQuery(sql);
-            if(resultado!=null){
-                cantidades = new ArrayList<Cantidad>();
-                while(resultado.next()){
-                    Cantidad cantidad = new Cantidad();
-                    cantidad.setIdCantidad(resultado.getInt("pkCantidad"));
-                    cantidad.setCantidad(resultado.getString("cantidad"));
-                    cantidades.add(cantidad);
-                }
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        finally{
-            cerrarConexion();
-            try {
-                resultado.close();
-                consulta.close();
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-        }
-        return cantidades;
-    }
-
-
-    public void insertarPelicula(Pelicula pelicula, Usuario administrador){
-        boolean v = validarCuenta(administrador.getCuenta(),administrador.getClave());
-        Statement sentencia = null;
-        StringBuilder sql = new StringBuilder();
-        if(v&&(administrador.getIdUsuario()==1)){
-            sql.append(" insert into pelicula values (null,")
-                    .append(pelicula.getIdPelicula()+ ",'")
-                    .append(pelicula.getNombre()+ "','")
-                    .append(pelicula.getCalificacion() + "','")
-                    .append(pelicula.getDuracion()+  "','")
-                    .append(pelicula.getSynopsis()+  "','")
-                    .append(pelicula.getUrl()+  "',")
-                    .append(pelicula.getGenero()+"')");
-        }
-
-        try{
-            abrirConexion();
-            sentencia = conexion.createStatement();
-            sentencia.execute(sql.toString(), Statement.RETURN_GENERATED_KEYS);
-            ResultSet resultado = sentencia.getGeneratedKeys();
-
-            pelicula.setIdPelicula(resultado.getInt("1"));
-
-        }catch (SQLException e){
-            e.printStackTrace();
-        } finally {
-            try {
-                sentencia.close();
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-            sentencia = null;
-            cerrarConexion();
-        }
-    }
 
     public Pelicula datosPelicula(Integer idPelicula){
         Pelicula pelicula = new Pelicula();
@@ -203,46 +137,6 @@ public class TransaccionDAOJdbc implements TransaccionDAO {
         return pelicula;
     }
 
-
-
-    public Pelicula mostrarInfo(){
-
-        Pelicula pelicula = null;
-
-        abrirConexion();
-        try {
-            consulta = conexion.createStatement();
-            String sql="select * from Pelicula";
-            resultado = consulta.executeQuery(sql);
-            if(resultado!=null){
-                pelicula = new Pelicula();
-
-                while(resultado.next()){
-
-                    pelicula.setIdPelicula(resultado.getInt("pkPelicula"));
-                    pelicula.setNombre(resultado.getString("nombre"));
-                    pelicula.setDuracion(resultado.getString("duracion"));
-                    pelicula.setCalificacion(resultado.getString("calificacion"));
-                    pelicula.setSynopsis(resultado.getString("synopsis"));
-                    pelicula.setUrl(resultado.getString("url"));
-                    pelicula.setGenero(resultado.getString("genero"));
-
-                }
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        finally{
-            cerrarConexion();
-            try {
-                resultado.close();
-                consulta.close();
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-        }
-        return pelicula;
-    }
 
     public Usuario agregarUsuario(Usuario usuario) {
         Statement sentencia = null;
@@ -394,12 +288,10 @@ public class TransaccionDAOJdbc implements TransaccionDAO {
     public Funcion agregarFuncion(Funcion funcion) {
         Statement sentencia = null;
         StringBuilder sql = new StringBuilder();
-        sql.append(" insert into full values (null,")
-                .append(" '" + funcion.getSala() + "')")
-                .append(" '" + funcion.getFkHorario() + "')")
-                .append(" '" + funcion.getFecha() + "')")
-                .append(" '" + funcion.getNroAsientos() + "')");
-
+        sql.append(" insert into Funcion values (null,")
+                .append(" '" + funcion.getFkPelicula() + "',")
+                .append(" '" + funcion.getFkSala() + "',")
+                .append(" '" + funcion.getFkHorario() + "');");
         try{
             abrirConexion();
             sentencia = conexion.createStatement();
@@ -422,11 +314,12 @@ public class TransaccionDAOJdbc implements TransaccionDAO {
         return funcion;
     }
 
-    public Horario agregarHorario(Horario horario) {
+    public Horario agregarHorario(String hora) {
+        Horario horario = new Horario();
         Statement sentencia = null;
         StringBuilder sql = new StringBuilder();
-        sql.append(" insert into full values (null,")
-                .append(" '" + horario.getHora() + "')");
+        sql.append(" insert into Horario values (null,")
+                .append(" '" + hora + "')");
 
         try{
             abrirConexion();
@@ -448,6 +341,35 @@ public class TransaccionDAOJdbc implements TransaccionDAO {
             cerrarConexion();
         }
         return horario;
+    }
+
+    public Sala agregarSala(Sala sala) {
+        Statement sentencia = null;
+        StringBuilder sql = new StringBuilder();
+        sql.append(" insert into Sala values (null,")
+                .append(" '" + sala.getNroSala() + "',")
+                .append(" '" + sala.getNroAsientos()+ "');");
+
+        try{
+            abrirConexion();
+            sentencia = conexion.createStatement();
+            sentencia.execute(sql.toString(), Statement.RETURN_GENERATED_KEYS);
+            ResultSet autogenerados = sentencia.getGeneratedKeys();
+            if (autogenerados.next()) {
+                sala.setIdSala(autogenerados.getInt(1));
+            }
+        }catch (SQLException e){
+            e.printStackTrace();
+        } finally {
+            try {
+                sentencia.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+            sentencia = null;
+            cerrarConexion();
+        }
+        return sala;
     }
 
     public Horario modificarHorario(Horario horario) {
@@ -539,9 +461,7 @@ public class TransaccionDAOJdbc implements TransaccionDAO {
                 while(resultado.next()) {
                     funcion.setIdFuncion(resultado.getInt("pkFuncion"));
                     funcion.setFkPelicula(resultado.getInt("fkPelicula"));
-                    funcion.setSala(resultado.getString("sala"));
-                    funcion.setFecha(resultado.getString("fecha"));
-                    funcion.setNroAsientos(resultado.getInt("nroAsientos"));
+                    funcion.setFkSala(resultado.getInt("fkSala"));
                     funcion.setFkHorario(resultado.getInt("fkHorario"));
                 }
             }
@@ -618,5 +538,96 @@ public class TransaccionDAOJdbc implements TransaccionDAO {
             }
         }
         return horarios;
+    }
+
+    public Usuario datoUsuario(Integer idUsuario){
+        Usuario retorno = null;
+        Statement sentencia = null;
+        StringBuilder sql = new StringBuilder();
+        sql.append(" select * from Usuario ")
+                .append(" where pkUsuario = '" + idUsuario +"';");
+        try{
+            abrirConexion();
+            sentencia = conexion.createStatement();
+            ResultSet resultado = sentencia.executeQuery(sql.toString());
+            while(resultado.next()){
+                retorno = new Usuario();
+                retorno.setIdUsuario(resultado.getInt("pkUsuario"));
+                retorno.setNombre(resultado.getString("nombre"));
+                retorno.setApPaterno(resultado.getString("apPaterno"));
+                retorno.setApMaterno(resultado.getString("apMaterno"));
+                retorno.setDni(resultado.getString("dni"));
+                retorno.setCorreo(resultado.getString("correo"));
+            }
+            cerrarConexion();
+        }catch (SQLException e){
+            e.printStackTrace();
+        } finally {
+            try {
+                sentencia.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+            sentencia = null;
+        }
+
+        return retorno;
+    }
+
+    public Horario datoHorario(Integer idHorario){
+        Horario horario = new Horario();
+        abrirConexion();
+        try {
+            consulta = conexion.createStatement();
+            String sql="select * from Horario where pkHorario = "+idHorario;
+            resultado = consulta.executeQuery(sql);
+            if(resultado!=null){
+                while(resultado.next()) {
+                    horario.setIdHorario(resultado.getInt("pkHorario"));
+                    horario.setHora(resultado.getString("hora"));
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        finally{
+            cerrarConexion();
+            try {
+                resultado.close();
+                consulta.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        return horario;
+    }
+
+    public Sala datoSala (Integer idSala){
+        Sala sala = new Sala();
+        abrirConexion();
+        try {
+            consulta = conexion.createStatement();
+            String sql="select * from Sala where pkSala = "+idSala;
+            resultado = consulta.executeQuery(sql);
+            if(resultado!=null){
+                while(resultado.next()) {
+                    sala.setIdSala(resultado.getInt("pkSala"));
+                    sala.setNroSala(resultado.getInt("nroSala"));
+                    sala.setNroAsientos(resultado.getInt("nroAsientos"));
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        finally{
+            cerrarConexion();
+            try {
+                resultado.close();
+                consulta.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        return sala;
     }
 }

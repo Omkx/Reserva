@@ -1,8 +1,7 @@
 package pe.uni.fiis.controlador;
 
 
-import pe.uni.fiis.modelo.bean.Funcion;
-import pe.uni.fiis.modelo.bean.Reserva;
+import pe.uni.fiis.modelo.bean.*;
 import pe.uni.fiis.modelo.factory.TransaccionFactory;
 
 import javax.servlet.ServletException;
@@ -34,8 +33,7 @@ public class ReservaServlet extends HttpServlet {
         int dia = fecha.get(Calendar.DAY_OF_MONTH);
         int hora = fecha.get(Calendar.HOUR_OF_DAY);
         int minuto = fecha.get(Calendar.MINUTE);
-        int segundo = fecha.get(Calendar.SECOND);
-        String fechaActual = "Fecha Actual: " + dia + "/" + (mes + 1) + "/" + año;
+        String fechaActual = dia + "/" + (mes + 1) + "/" + año + " "+ hora + ":" + minuto;
 
         Reserva reserva = new Reserva();
         reserva.setFkFuncion(fkFuncion);
@@ -43,7 +41,21 @@ public class ReservaServlet extends HttpServlet {
         reserva.setFechaReserva(fechaActual);
         reserva.setMonto(monto);
         TransaccionFactory.getInstance().agregarReserva(reserva);
-        request.getRequestDispatcher("/reserva.jsp").forward(request, response);
+
+        Usuario usuario;
+        usuario = TransaccionFactory.getInstance().datoUsuario(idUsuario);
+        Pelicula pelicula;
+        pelicula = TransaccionFactory.getInstance().datosPelicula(idPelEnt);
+        Horario horario;
+        horario = TransaccionFactory.getInstance().datoHorario(idHorario);
+        if(usuario != null && pelicula != null && horario != null) {
+                request.setAttribute("usu", usuario);
+                request.setAttribute("pelicula",pelicula);
+                request.setAttribute("horario",horario);
+                request.setAttribute("reserva", reserva);
+                request.getRequestDispatcher("/reserva.jsp").forward(request, response);
+        }
+
 
     }
 }
