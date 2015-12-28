@@ -3,12 +3,14 @@ package pe.uni.fiis.controlador;
 import pe.uni.fiis.modelo.bean.*;
 import pe.uni.fiis.modelo.factory.TransaccionFactory;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 
 public class LoginServlet extends HttpServlet {
@@ -26,11 +28,13 @@ public class LoginServlet extends HttpServlet {
 
         if(usuario != null){
             if (usuario.getCuenta().equals("admin")){
-                request.setAttribute("usu", usuario);
+                HttpSession session = request.getSession();
+                session.setAttribute("admin",usuario);
                 request.getRequestDispatcher("/Administrador.jsp").forward(request,response);
             }else {
-                request.setAttribute("usu", usuario);
-                List<Pelicula> peliculas = TransaccionFactory.getInstance().listarPelicula();
+                HttpSession session = request.getSession();
+                session.setAttribute("usu",usuario);
+                List<Pelicula> peliculas = TransaccionFactory.getInstance().listarFuncionesDePelicula();
                 request.setAttribute("peliculas", peliculas);
                 request.getRequestDispatcher("/LaUltima.jsp").forward(request, response);
             }
@@ -38,8 +42,7 @@ public class LoginServlet extends HttpServlet {
         else{
             //String mensaje = "Usuario no existe";
             //request.setAttribute("men",mensaje);
-            request.getRequestDispatcher("/login.jsp").forward(request,response);
-
+            request.getRequestDispatcher("/login.jsp").forward(request, response);
         }
     }
 }

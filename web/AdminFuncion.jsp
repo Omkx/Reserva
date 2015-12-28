@@ -24,26 +24,39 @@
     <script src="js/core.js"></script>
 </head>
 <body>
+<%
+    if(session.getAttribute("admin") == null){
+        response.sendRedirect("login.jsp");
+    }
+%>
 <div class="container">
     <div class="login">
         <div class="row center">
             <div class="col-xs-8 col-xs-offset-2 col-sm-6 col-sm-offset-3">
                 <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <strong class="text-center">Actualizar datos</strong>
+                    <div class="panel-heading" style="padding-bottom: 0;">
+                        </span> <strong class="text-center">CREAR FUNCION</strong>
+                        <div class="input-group" style="display: inline-block;margin-left: 14.2em;">
+                            <form action="logout" method="post" accept-charset="UTF-8">
+                                <fieldset>
+                                    <div class="form-group">
+                                        <button type="submit" class="btn btn-default" aria-haspopup="true" aria-expanded="true">Cerrar Sesion</button>
+                                    </div>
+                                </fieldset>
+                            </form>
+                        </div>
                     </div>
                     <div class="panel body">
                         <form action="AdminFuncion" method="post" accept-charset="UTF-8">
                             <fieldset>
                                 <div class="row">
-                                    <div class="text-center">
+                                    <div class="text-center" style="margin-bottom: 1em;">
                                         <img class="profile-img" src="img/ticket.png" height="128" width="128" alt="">
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-sm-12 col-md-10 col-md-offset-1">
                                         <div class="form-group" name="pel">
-                                            <label style="display:block;padding-top:15px;padding-bottom:15px;">NOMBRE DE LA PELÍCULA</label>
                                             <div class="input-group">
                                                 <span class="input-group-addon">
 														<i class="glyphicon glyphicon-film"></i>
@@ -83,8 +96,6 @@
                                         <div class="form-group">
                                             <button type="submit" class="btn btn-lg btn-primary btn-block" >Actualizar</button>
                                         </div>
-
-
                                     </div>
                                 </div>
                             </fieldset>

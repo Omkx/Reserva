@@ -24,17 +24,24 @@
     <script src="js/core.js"></script>
 </head>
 <body>
+<%
+    if(session.getAttribute("admin") == null){
+        response.sendRedirect("login.jsp");
+    }
+%>
 <div class="container">
     <div class="login">
         <div class="row center">
             <div class="col-xs-8 col-xs-offset-2 col-sm-6 col-sm-offset-3">
                 <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <strong class="text-center">Actualizar datos</strong>
+                    <div class="panel-heading" style="padding-bottom: 0;">
+                        <strong class="text-center">ADMINISTRAR</strong>
+                        <jsp:include page="logout.jsp" />
                     </div>
+
                     <div class="panel body">
                         <div class="row">
-                            <div class="text-center">
+                            <div class="text-center" style="margin-bottom: 1em;">
                                 <img class="profile-img" src="img/ticket.png" height="128" width="128" alt="">
                             </div>
                         </div>

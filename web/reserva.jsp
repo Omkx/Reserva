@@ -27,15 +27,27 @@
     <script src="js/jspdf.js"></script>
 
 </head>
+<%
+    if(session.getAttribute("usu") == null){
+        response.sendRedirect("/login.jsp");
+    }
+%>
 <body class="ultima">
-
-
 <div class="container">
         <div class="row center">
             <div class="col-xs-8 col-xs-offset-2 col-sm-6 col-sm-offset-3">
                 <div class="panel panel-default" style="position:absolute; width:700px; height:auto;">
-                    <div class="panel-heading">
+                    <div class="panel-heading" style="padding-bottom: 0;">
                         <span class="glyphicon glyphicon-film"></span> <strong class="text-center">RESERVA</strong>
+                        <div class="input-group" style="display: inline-block;margin-left: 26.5em;">
+                            <form action="logout" method="post" accept-charset="UTF-8">
+                                <fieldset>
+                                    <div class="form-group">
+                                        <button type="submit" class="btn btn-default" aria-haspopup="true" aria-expanded="true">Logout</button>
+                                    </div>
+                                </fieldset>
+                            </form>
+                        </div>
                     </div>
                     <div class="panel body">
                                 <div class="col-sm-12 col-md-10 col-md-offset-1" style="padding-left:10px;padding-right:10px;" >

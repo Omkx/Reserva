@@ -29,14 +29,14 @@
 		<div class="row center">
 			<div class="col-xs-8 col-xs-offset-2 col-sm-6 col-sm-offset-3">
 				<div class="panel panel-default">
-					<div class="panel-heading">
-						<strong class="text-center">Inicie sesión</strong>
+					<div class="panel-heading" style="padding-bottom: 1em;">
+						<strong class="text-center">INICIAR SESION</strong>
 					</div>
 					<div class="panel body">
 						<form action="login" method="post">
 							<fieldset>
 								<div class="row">
-									<div class="text-center">
+									<div class="text-center" style="margin-bottom: 1em;">
 										<img class="profile-img" src="img/ticket.png" height="128" width="128" alt="">
 									</div>
 								</div>
@@ -61,6 +61,7 @@
 										<div class="form-group">
 											<button type="submit" class="btn btn-lg btn-primary btn-block">Ingresar</button>
 
+										</div>
 										</div>
 									</div>
 							</fieldset>

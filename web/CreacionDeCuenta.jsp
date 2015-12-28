@@ -29,7 +29,7 @@
 			<div class="col-xs-8 col-xs-offset-2 col-sm-6 col-sm-offset-3">
 				<div class="panel panel-default">
 					<div class="panel-heading">
-						<strong class="text-center">Creacion de Cuenta</strong>
+						<strong class="text-center">CREAR CUENTA</strong>
 					</div>
 					<div class="panel body">
 
@@ -75,11 +75,6 @@
 											<input type="text" class="form-control" id="inApPa" name="inApPa" placeholder="Ingrese Apellido Paterno" autofocus required>
 										</div>
 									</div>
-									<div class="form-group">
-										  		<span>
-													<i id="nologon" class="hidden text-danger"></i>
-												</span>
-									</div>
 
 									<div class="form-group">
 										<div class="input-group">
@@ -94,7 +89,7 @@
 													<span class="input-group-addon">
 														<i class="glyphicon glyphicon-envelope"></i>
 													</span>
-											<input type="text" class="form-control" id="inEmail" name="inEmail" placeholder="Ingrese correo electronico"  autofocus required>
+											<input type="email" class="form-control" id="inEmail" name="inEmail" placeholder="Ingrese correo electronico"  autofocus required>
 										</div>
 									</div>
 									<div class="form-group">
@@ -102,7 +97,7 @@
 													<span class="input-group-addon">
 														<i class="glyphicon glyphicon-credit-card"></i>
 													</span>
-											<input type="text" class="form-control" id="inDni" name="inDni" placeholder="Ingrese DNI"  autofocus required>
+											<input type="text" class="form-control" id="inDni" name="inDni" pattern="[0-9]{8}" placeholder="Ingrese DNI"  autofocus required>
 										</div>
 									</div>
 

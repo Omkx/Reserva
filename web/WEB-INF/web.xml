@@ -3,7 +3,10 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
          version="3.1">
-
+        <display-name>Reserva Cine</display-name>
+        <welcome-file-list>
+            <welcome-file>/login.jsp</welcome-file>
+        </welcome-file-list>
     <servlet>
         <servlet-name>LoginServlet</servlet-name>
         <servlet-class>pe.uni.fiis.controlador.LoginServlet</servlet-class>
@@ -36,6 +39,14 @@
         <servlet-name>AdminServlet</servlet-name>
         <servlet-class>pe.uni.fiis.controlador.AdminServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>LogoutServlet</servlet-name>
+        <servlet-class>pe.uni.fiis.controlador.LogoutServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>LogoutServlet</servlet-name>
+        <url-pattern>/logout</url-pattern>
+    </servlet-mapping>
     <servlet-mapping>
         <servlet-name>AdminServlet</servlet-name>
         <url-pattern>/Admin</url-pattern>

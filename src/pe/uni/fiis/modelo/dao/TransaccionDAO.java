@@ -16,6 +16,7 @@ public interface TransaccionDAO {
     void eliminarHorario(Horario horario);
     Usuario obtenerUsuario(Usuario usuario);
     List<Pelicula> listarPelicula();
+    List<Pelicula> listarFuncionesDePelicula();
     Funcion InfoFuncion(Integer idPelicula);
     List<Horario> InfoHorarios(Integer idPelicula);
     Integer ElegirFuncion(Integer idPelicula, Integer idHorario);

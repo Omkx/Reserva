@@ -71,6 +71,42 @@ public class TransaccionDAOJdbc implements TransaccionDAO {
         return peliculas;
     }
 
+    public List<Pelicula> listarFuncionesDePelicula(){
+        List<Pelicula> peliculas = null;
+        abrirConexion();
+        try {
+            consulta = conexion.createStatement();
+            String sql="select b.pkPelicula , b.nombre ,b.calificacion" +
+                    "  from Funcion a , Pelicula b where a.fkPelicula = b.pkPelicula;";
+
+            resultado = consulta.executeQuery(sql);
+            if(resultado!=null){
+                peliculas = new ArrayList<Pelicula>();
+                while(resultado.next()){
+                    Pelicula pelicula= new Pelicula();
+                    pelicula.setIdPelicula(resultado.getInt("pkPelicula"));
+                    pelicula.setNombre(resultado.getString("nombre"));
+                    pelicula.setDuracion(resultado.getString("duracion"));
+                    pelicula.setCalificacion(resultado.getString("calificacion"));
+                    peliculas.add(pelicula);
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        finally{
+            cerrarConexion();
+            try {
+                resultado.close();
+                consulta.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        return peliculas;
+    }
+
+
     public List<Sala> listarSala(){
         List<Sala> salas = null;
         abrirConexion();

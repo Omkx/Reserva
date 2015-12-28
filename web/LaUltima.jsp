@@ -26,16 +26,28 @@
 	<script src="js/script.js"></script>
 
 </head>
+<%
+	if(session.getAttribute("usu") == null){
+		response.sendRedirect("/login.jsp");
+	}
+%>
 <body class="ultima">
-
-
 <div class="container">
 	<div class="Cartelera ">
 		<div class="row center">
 			<div class="col-xs-8 col-xs-offset-2 col-sm-6 col-sm-offset-3">
 				<div class="panel panel-default" style="position:absolute; width:700px; height:auto;">
-					<div class="panel-heading">
+					<div class="panel-heading" style="padding-bottom: 0;">
 						<span class="glyphicon glyphicon-film"></span> <strong class="text-center">VENTA DE TICKETS</strong>
+						<div class="input-group" style="display: inline-block;margin-left: 22.3em;">
+							<form action="logout" method="post" accept-charset="UTF-8">
+								<fieldset>
+									<div class="form-group">
+										<button type="submit" class="btn btn-default" aria-haspopup="true" aria-expanded="true">Logout</button>
+									</div>
+								</fieldset>
+							</form>
+						</div>
 					</div>
 					<div class="panel body">
 						<form action="Reservar" method="post">

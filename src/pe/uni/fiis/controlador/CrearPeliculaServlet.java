@@ -52,7 +52,7 @@ public class CrearPeliculaServlet extends HttpServlet {
 
         List<Pelicula> peliculas = TransaccionFactory.getInstance().listarPelicula();
         request.setAttribute("peliculas", peliculas);
-        request.getRequestDispatcher("/AdminFuncion.jsp").forward(request,response);
+        request.getRequestDispatcher("/Administrador.jsp").forward(request,response);
         //request.getRequestDispatcher("/login.jsp").forward(request,response);
 
     }

@@ -33,7 +33,7 @@ public class CrearFuncionServlet extends HttpServlet {
         funcion.setFkSala(idSala);
         funcion.setFkPelicula(idPelicula);
         TransaccionFactory.getInstance().agregarFuncion(funcion);
-        request.getRequestDispatcher("/login.jsp").forward(request,response);
+        request.getRequestDispatcher("/Administrador.jsp").forward(request,response);
 
     }
 }

@@ -28,6 +28,6 @@ public class AdminSalaServlet extends HttpServlet {
         TransaccionFactory.getInstance().agregarSala(sala);
         List<Sala> salas = TransaccionFactory.getInstance().listarSala();
         request.setAttribute("salas", salas);
-        request.getRequestDispatcher("/AdminFuncion.jsp").forward(request,response);
+        request.getRequestDispatcher("/Admininstrador.jsp").forward(request,response);
     }
 }
