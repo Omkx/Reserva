@@ -76,7 +76,7 @@ public class TransaccionDAOJdbc implements TransaccionDAO {
         abrirConexion();
         try {
             consulta = conexion.createStatement();
-            String sql="select b.pkPelicula , b.nombre ,b.calificacion" +
+            String sql="select b.pkPelicula , b.nombre" +
                     "  from Funcion a , Pelicula b where a.fkPelicula = b.pkPelicula;";
 
             resultado = consulta.executeQuery(sql);
@@ -86,8 +86,6 @@ public class TransaccionDAOJdbc implements TransaccionDAO {
                     Pelicula pelicula= new Pelicula();
                     pelicula.setIdPelicula(resultado.getInt("pkPelicula"));
                     pelicula.setNombre(resultado.getString("nombre"));
-                    pelicula.setDuracion(resultado.getString("duracion"));
-                    pelicula.setCalificacion(resultado.getString("calificacion"));
                     peliculas.add(pelicula);
                 }
             }
